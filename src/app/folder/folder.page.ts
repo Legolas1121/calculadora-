@@ -17,7 +17,7 @@ export class FolderPage implements OnInit {
   }
   display = 0;
   memory = 0;
-  state = 'number';
+  state = 'numero';
   operador = '+';
   decimal = false;
   decimals = 0;
@@ -29,14 +29,14 @@ export class FolderPage implements OnInit {
           this.decimals++;
           this.display = this.display + numero * Math.pow(10, -this.decimals);
         } else {
-          this.display = this.display * 10 + numero;
+          this.display = this.display * 10   + numero;
         }
         break;
       case 'operator':
         this.display = numero;
         this.state = 'numero';
         break;
-      case 'result':
+      case 'resultado':
         this.memory = 0;
         this.display = numero;
         this.state = 'numero';
@@ -44,18 +44,18 @@ export class FolderPage implements OnInit {
   }
 
   clickOperador(operando: string) {
-    // console.log('clickOperator inicio');
     this.calcular();
     this.operador = operando;
     this.memory = this.display;
+    this.display = eval(this.operador);
     this.state = 'operator';
-    // console.log('clickOperator fin');
+
   }
 
   calcular() {
     this.display = eval('' + this.memory + this.operador + '(' + this.display + ')');
     this.memory = 0;
-    this.state = 'result';
+    this.state = 'resultado';
     this.operador = '+';
     this.decimal = false;
     this.decimals = 0;
@@ -77,9 +77,7 @@ export class FolderPage implements OnInit {
     this.decimals = 0;
   }
 
-  /* changeSign() {
-    this.display = this.display * -1;
-  } */
+
 
   setDecimal() {
     this.decimal = true;
