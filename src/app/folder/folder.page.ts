@@ -47,7 +47,6 @@ export class FolderPage implements OnInit {
     this.calcular();
     this.operador = operando;
     this.memory = this.display;
-    this.display = eval(this.operador);
     this.state = 'operator';
 
   }
